@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #444;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 100%;
+    height: 70px;
+    margin: 0 auto 10px;
+    /* animation: wiggle 0.4s linear infinite; */
+}
+
+.handle {
+    position: relative;
+    float: left;
+    vertical-align: top;
+    height: 80px;
+    margin-top: 70px;
+    width: 25px;
+    border-radius: 0 5px 5px 0/20px;
+    border: 1px solid rgba(189, 160, 112, 0.5);
+    background: linear-gradient(to bottom, #CD9819 0%, #f5f5f5 20%, #e2ba78 67%, #b6783d 90%, #CD9819 100%);
+}
+
+.handle,
+.handle:before,
+.handle:after {
+    transition: all 0.2s linear;
+    cursor: pointer;
+    bottom: 50px;
+    right: 49px;
+}
+
+.handle:before,
+.handle:after {
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+.handle:before {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(163, 126, 67, 0.1);
+    background: linear-gradient(to right, #f5d6b1 0%, #cc9310 20%, #f1e767 60%, #f5f5f5 90%, #f1e767 100%);
+    width: 12px;
+    height: 110px;
+    bottom: 30px;
+    right: -14px;
+    border-bottom-right-radius: 10px 8px;
+}
+
+.handle:after {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    top: -89px;
+    right: -21px;
+    border: 1px solid rgba(204, 147, 16, 0.3);
+    background: radial-gradient(ellipse at 75% 25%, #ffffff 0%, #f1e767 25%, #cc9310 60%, #feb645 91%);
+}
+
+.handle.active {
+    background-position: 0 47px;
+}
+
+.handle.active:before {
+    height: 0px;
+    border-bottom-right-radius: 2px;
+    transform: translateY(5px);
+}
+
+.handle.active:after {
+    transform: translateY(115px);
+}
+
+.slots {
+    width: 730px;
+    background-image: url("./slot-body.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 14px;
+    bottom: 92px;
+}
+
+.outer-col {
+    position: relative;
+    width: 158px;
+    margin: 0 14px;
+    background-color: #fbfbfb;
+    float: left;
+}
+
+.outer-col::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 158px;
+    height: 100%;
+    background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, rgb(255, 255, 255) 100%);
+}
+
+.col {
+    padding: 10px;
+    will-change: true;
+
+}
+
+
+.slots.spinning .outer-col:nth-of-type(2) .col {
+    animation-delay: 0.1s;
+}
+
+.slots.spinning .outer-col:nth-of-type(3) .col {
+    animation-delay: 0.2s;
+}
+
+.slots.spinning .outer-col:nth-of-type(4) .col {
+    animation-delay: 0.3s;
+}
+
+.slots.spinning .outer-col:nth-of-type(5) .col {
+    animation-delay: 0.4s;
+}
+
+.slots.spinning .outer-col:nth-of-type(6) .col {
+    animation-delay: 0.5s;
+}
+
+.slots.spinning .col {
+    animation: scroll 3s cubic-bezier(.5, 0, .5, 1) 1, blur 3s cubic-bezier(.5, 0, .5, 1) 1;
+    /* animation: scroll 3s cubic-bezier(.5, 0, .5, 1) 1 */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0, calc(-100% + 250px), 0);
+    }
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(0);
+    }
+
+    10% {
+        filter: blur(0);
+    }
+
+    30% {
+        filter: blur(6px);
+    }
+
+    60% {
+        filter: blur(6px);
+    }
+
+    80% {
+        filter: blur(0);
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
+}
