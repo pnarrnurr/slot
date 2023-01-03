@@ -6,6 +6,8 @@ var slots = document.querySelector('.slots');
 var cols = document.querySelectorAll('.col');
 var btnSpin = document.querySelector('#slot-trigger');
 var handle = document.querySelector('.handle');
+const audio = document.querySelector('audio');
+const source = document.querySelector('source');
 for (var i in cols) {
     if (!cols.hasOwnProperty(i))
         continue;
@@ -24,6 +26,9 @@ for (var i in cols) {
 function spin(elem) {
     elem.setAttribute('disabled', true);
     slots.classList.toggle('spinning', true);
+    source.src = "https://assets.mixkit.co/sfx/preview/mixkit-reel-to-reel-rewind-1095.mp3";
+    audio.load();
+    audio.play();
     window.setTimeout(function () {
         for (var i in cols) {
             if (!cols.hasOwnProperty(i))
