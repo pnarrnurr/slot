@@ -1,10 +1,14 @@
 * {
     box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
 }
 
 body {
     background-color: #444;
     height: 100vh;
+    margin: 0;
+    overflow: hidden;
 }
 
 .icon {
@@ -84,6 +88,29 @@ body {
     height: 100%;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+.options-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.options {
+    list-style: none;
+    padding: 0;
+}
+
+.options li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 30px;
+}
+
+.options li svg {
+    width: 26px;
+    margin: 0 10px 0 0;
 }
 
 .slots-area {
